@@ -15,6 +15,10 @@ export default function Home() {
       <Head>
         <title>Sebastian Golbert - Fullstack Web Developer</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
 
       <main>
@@ -32,17 +36,46 @@ export default function Home() {
 }
 
 const Homepage = styled.body`
-  html,
+  html {
+    font-size: 125%;
+  }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 20px;
+    color: blue;
+    font-family: "Aleo", serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
     margin: 0;
     padding: 0;
   }
 
+  h1 {
+    /* font-size: 4.209em; */
+    font-size: clamp(3.157em, 16.82vw, 4.209em);
+  }
+
   h2 {
-    color: red;
+    /* font-size: 3.157em; */
+    font-size: clamp(2.369em, 12.62vw, 3.157em);
+  }
+
+  h3 {
+    /* font-size: 2.369em; */
+    font-size: clamp(1.777em, 9.47vw, 2.369em);
+  }
+
+  h4 {
+    /* font-size: 1.777em; */
+    font-size: clamp(1.333em, 7.11vw, 1.777em);
+  }
+
+  h5 {
+    font-size: clamp(1em, 5.33vw, 1.333em);
+  }
+
+  small,
+  .text_small {
+    font-size: 0.75em;
   }
 
   * {
