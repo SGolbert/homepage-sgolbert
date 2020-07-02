@@ -1,10 +1,13 @@
 import Link from "next/link";
+import styled from "styled-components";
+import Section from "components/Section";
 import TeaserPost from "components/TeaserPost";
 
-function BlogTeaser() {
+const background = "linear-gradient(180deg, #001233 0%, #003087 100%)";
+
+function BlogTeaser(props) {
   return (
-    <div>
-      <h2>Blog</h2>
+    <Section title="Blog" bg={background}>
       <TeaserPost />
       <TeaserPost />
       <TeaserPost />
@@ -12,7 +15,7 @@ function BlogTeaser() {
       <Link href="/">
         <a>Go to blog site</a>
       </Link>
-    </div>
+    </Section>
   );
 }
 

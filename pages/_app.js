@@ -12,6 +12,15 @@ const theme = {
     textBlack: "#001233",
     textWhite: "#FFFFFF",
   },
+  backgrounds: {
+    about: "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)",
+    blog: "linear-gradient(180deg, #001233 0%, #003087 100%)",
+  },
+  media_sizes: {
+    mobile: "375px",
+    mobileTransition: "400px",
+    desktop: "1440px",
+  },
 };
 
 export default class MyApp extends App {

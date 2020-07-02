@@ -38,18 +38,18 @@ export default function Home() {
 
 const GlobalStyle = createGlobalStyle`
   html {
-    background: black;
+    background: ${(props) => props.theme.colors.textBlack};
     display: flex;
     font-size: 125%;
     justify-content: center;
   }
 
   body {
-    color: blue;
+    color: white;
     font-family: "Aleo", serif;
     line-height: 1.65;
     margin: 0;
-    max-width: 1440px;
+    ${"" /* max-width: 1440px; */}
     padding: 0;
     width: 100%;
 
