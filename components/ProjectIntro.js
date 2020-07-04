@@ -4,7 +4,8 @@ function ProjectIntro() {
   return (
     <div>
       <img
-        width="480"
+        // width="480"
+        width="280"
         height="393"
         src="https://www.fillmurray.com/480/393"
         alt="Post Intro Image"

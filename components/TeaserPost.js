@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-function TeaserPost() {
+function TeaserPost(props) {
   return (
-    <PostContainer>
+    <PostContainer {...props}>
       <Img
         src="https://www.fillmurray.com/224/163"
         alt="Post Intro Image"
@@ -26,16 +26,27 @@ const Description = styled.p`
 
 const Img = styled.img`
   border-radius: 6px;
-  width: 224px;
+  object-fit: cover;
   height: 163px;
+  width: 224px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    height: 166px;
+    width: 361px;
+  }
 `;
 
 const PostContainer = styled.div`
   background: ${(props) => props.theme.colors.primary};
   border-radius: 10px;
-  padding: 32px 50px;
-  display: flex;
+  display: ${({ displayOnlyDesktop }) =>
+    displayOnlyDesktop ? "none" : "flex"};
   flex-direction: column;
+  padding: 32px 50px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    display: flex;
+  }
 `;
 
 export default TeaserPost;

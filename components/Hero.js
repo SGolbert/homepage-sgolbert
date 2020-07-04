@@ -13,16 +13,21 @@ function Hero() {
 }
 
 const HeroContainer = styled.div`
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
   background: url("hero.webp");
   background-repeat: no-repeat;
-  background-size: 100%;
-  height: clamp(50vw, 61.8vw, 890px);
+  background-size: cover;
+  /* height: clamp(50vw, 61.8vw, 890px); */
+  height: 890px;
   justify-content: center;
-  max-height: 890px;
+  /* max-height: 890px; */
   max-width: 1440px;
   width: 100%;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    align-items: flex-end;
+  }
 `;
 
 const HeroBody = styled.div`
