@@ -7,7 +7,9 @@ const background =
 function About() {
   return (
     <Section title="About" bg={background}>
-      <Subtitle>This is the stack I use</Subtitle>
+      <Subtitle>
+        This is the <br /> stack I use
+      </Subtitle>
       <StackIcons>
         <Img width="90" height="80" src="react.svg" alt="React"></Img>
         <Img width="132" height="80" src="nextjs.svg" alt="Next"></Img>
@@ -23,7 +25,15 @@ function About() {
 const Subtitle = styled.h3`
   margin-top: 55px;
   text-align: center;
-  width: 180px;
+  width: clamp(180px, 53.57vw, 1440px);
+
+  br {
+    display: block;
+
+    @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+      display: none;
+    }
+  }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     margin-top: 41px;
@@ -40,7 +50,7 @@ const StackIcons = styled.div`
   margin: 42px 20px 58px 20px;
   width: 100%;
 
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+  @media (min-width: 450px) {
     margin: 192px 0 58px 0;
     grid-template-columns: repeat(auto-fit, 150px 150px 150px);
   }

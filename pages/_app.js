@@ -18,7 +18,7 @@ const theme = {
   },
   media_sizes: {
     mobile: "375px",
-    mobileTransition: "400px",
+    mobileTransition: "800px",
     desktop: "1440px",
   },
 };

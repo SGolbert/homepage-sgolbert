@@ -22,14 +22,21 @@ function BlogTeaser(props) {
 }
 
 const PostContainer = styled.div`
+  align-self: center;
   display: grid;
-  grid-template-columns: 323px;
-  grid-column-gap: 121px;
+  grid-template-columns: repeat(auto-fill, 323px);
+  grid-column-gap: clamp(20px, 3.5vw, 120px);
   grid-row-gap: 67px;
+  justify-content: center;
+  justify-items: center;
   margin: 85px 0 0px 0;
+  width: 100%;
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    grid-template-columns: 479px 479px;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 479px 479px; */
+    /* grid-column-gap: clamp(20px, 8.33vw, 120px); */
+    grid-column-gap: clamp(20px, 5vw, 120px);
   }
 `;
 

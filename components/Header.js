@@ -13,32 +13,21 @@ function Header() {
           <LinkItem>Contact</LinkItem>
         </HeaderLinks>
         <HeaderSocialMedia />
-        <Hamburger />
+        <Hamburger
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="white"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M4.6875 5.625H25.3125V7.5H4.6875V5.625Z" />
+          <path d="M4.6875 14.0625H25.3125V15.9375H4.6875V14.0625Z" />
+          <path d="M4.6875 22.5H25.3125V24.375H4.6875V22.5Z" />
+        </Hamburger>
       </HeaderContainer>
     </HeaderBody>
   );
 }
-
-const Hamburger = styled.div`
-  background: url("hamburger-menu.svg");
-  display: block;
-  height: 30px;
-  width: 30px;
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    display: none;
-    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
-  }
-`;
-
-const HeaderSocialMedia = styled(SocialMedia)`
-  margin: 20px 0 20px 0;
-  align-self: auto;
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
-  }
-`;
 
 const HeaderBody = styled.div`
   align-items: center;
@@ -52,6 +41,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  height: 65px;
+  margin: 0px clamp(20px, 8.33vw, 120px);
   max-width: 1440px;
   width: 100%;
 `;
@@ -60,20 +51,17 @@ const HeaderLinks = styled.div`
   align-items: center;
   display: none;
   flex-direction: column;
-  /* justify-self: center; */
-  margin: 30px;
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     display: flex;
     flex-direction: row;
-    margin: 0px 0 0px clamp(60px, 8.33vw, 120px);
   }
 `;
 
 const LinkItem = styled.h5`
   color: ${(props) => props.theme.colors.textWhite};
   font-size: 1.2rem;
-  margin: 17px 0px;
+  margin: 0px;
 
   :hover {
     color: ${(props) => props.theme.colors.secondary};
@@ -81,10 +69,33 @@ const LinkItem = styled.h5`
   }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    display: block;
     :not(:last-child) {
       margin: 0 clamp(40px, 5vw, 80px) 0 0;
     }
+  }
+`;
+
+const HeaderSocialMedia = styled(SocialMedia)`
+  margin: 20px 0 20px 0;
+  align-self: auto;
+
+  /* @media (min-width: ${(props) =>
+    props.theme.media_sizes.mobileTransition}) {
+    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
+  } */
+`;
+
+const Hamburger = styled.svg`
+  display: block;
+
+  :hover {
+    fill: ${(props) => props.theme.colors.secondary};
+    cursor: pointer;
+  }
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    display: none;
+    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
   }
 `;
 

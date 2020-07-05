@@ -32,7 +32,7 @@ const Img = styled.img`
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     height: 166px;
-    width: 361px;
+    width: clamp(224px, 25vw, 361px);
   }
 `;
 
@@ -42,7 +42,12 @@ const PostContainer = styled.div`
   display: ${({ displayOnlyDesktop }) =>
     displayOnlyDesktop ? "none" : "flex"};
   flex-direction: column;
+  justify-self: right;
   padding: 32px 50px;
+
+  :nth-child(2n) {
+    justify-self: left;
+  }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     display: flex;
