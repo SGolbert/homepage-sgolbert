@@ -17,7 +17,7 @@ export default function Home() {
         <title>Sebastian Golbert - Fullstack Web Developer</title>
         <link rel="icon" href="/favicon.ico" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet"
         ></link>
       </Head>
