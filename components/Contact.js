@@ -3,9 +3,11 @@ import Section from "components/Section";
 import SocialMedia from "components/SocialMedia";
 import TextInput from "components/TextInput";
 
+const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
+
 function Contact() {
   return (
-    <Section title="Contact">
+    <Section title="Contact" bg={background}>
       <ContactForm>
         <label htmlFor="name">Name</label>
         <Input type="text" id="name" name="name" />
@@ -13,7 +15,7 @@ function Contact() {
         <Input type="email" id="email" name="email" />
         <label htmlFor="message">Message</label>
         <TextArea id="message" name="message" />
-        <Submit type="submit" value="Submit" />
+        <Submit id="submit" type="submit" value="Submit" />
       </ContactForm>
       <Social />
     </Section>
@@ -28,10 +30,14 @@ const TextArea = styled.textarea`
   line-height: 1.65;
   padding: 11px 14px;
   width: 324px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    width: 100%;
+  }
 `;
 
 const Social = styled(SocialMedia)`
-  margin-top: 73px;
+  margin: 73px 0 40px 0;
 `;
 
 const Submit = styled.input`
@@ -65,8 +71,37 @@ const Input = styled.input`
 
 const ContactForm = styled.form`
   display: grid;
+  grid-template-columns: auto;
   margin-top: 36px;
   width: 324px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 39px;
+    width: 100%;
+    max-width: 500px;
+
+    #name {
+      grid-column-start: 1;
+      grid-row-start: 2;
+    }
+
+    #email {
+      grid-column-start: 2;
+      grid-row-start: 2;
+    }
+
+    #message {
+      grid-column: 1 / -1;
+      grid-row-start: 4;
+    }
+
+    #submit {
+      grid-column: 2 / -1;
+      grid-row-start: 5;
+      justify-self: right;
+    }
+  }
 `;
 
 export default Contact;
