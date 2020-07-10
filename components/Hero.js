@@ -12,26 +12,7 @@ function Hero() {
   );
 }
 
-const HeroContainer = styled.div`
-  align-items: flex-end;
-  display: flex;
-  background: url("hero.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  /* height: clamp(50vw, 61.8vw, 890px); */
-  height: 890px;
-  justify-content: center;
-  /* max-height: 890px; */
-  max-width: 1440px;
-  width: 100%;
-
-  /* @media (min-width: ${(props) =>
-    props.theme.media_sizes.mobileTransition}) {
-    align-items: flex-end;
-  } */
-`;
-
+// The before pseudo-element is to put a blurry background behind the hero image
 const HeroBody = styled.div`
   /* :before {
     content: "";
@@ -49,6 +30,19 @@ const HeroBody = styled.div`
 
   display: flex;
   justify-content: center;
+  width: 100%;
+`;
+
+const HeroContainer = styled.div`
+  align-items: flex-end;
+  background: url("hero.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 890px;
+  justify-content: center;
+  max-width: 1440px;
   width: 100%;
 `;
 

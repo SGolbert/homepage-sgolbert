@@ -15,27 +15,6 @@ function TeaserPost(props) {
   );
 }
 
-const Title = styled.h4`
-  font-size: 1.777em;
-  margin-top: 35px;
-`;
-
-const Description = styled.p`
-  margin-top: 7px;
-`;
-
-const Img = styled.img`
-  border-radius: 6px;
-  object-fit: cover;
-  height: 163px;
-  width: 224px;
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    height: 166px;
-    width: clamp(224px, 25vw, 361px);
-  }
-`;
-
 const PostContainer = styled.div`
   background: ${(props) => props.theme.colors.primary};
   border-radius: 10px;
@@ -52,6 +31,27 @@ const PostContainer = styled.div`
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     display: flex;
   }
+`;
+
+const Img = styled.img`
+  border-radius: 6px;
+  object-fit: cover;
+  height: 163px;
+  width: 224px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    height: 166px;
+    width: clamp(224px, 25vw, 361px);
+  }
+`;
+
+const Title = styled.h4`
+  font-size: 1.777em;
+  margin-top: 35px;
+`;
+
+const Description = styled.p`
+  margin-top: 7px;
 `;
 
 export default TeaserPost;

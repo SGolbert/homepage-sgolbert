@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Section from "components/Section";
 import SocialMedia from "components/SocialMedia";
-import TextInput from "components/TextInput";
 
 const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
 
@@ -21,53 +20,6 @@ function Contact() {
     </Section>
   );
 }
-
-const TextArea = styled.textarea`
-  border-radius: 4px;
-  font-family: "Lato", sans-serif;
-  font-size: 15px;
-  height: 153px;
-  line-height: 1.65;
-  padding: 11px 14px;
-  width: 324px;
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    width: 100%;
-  }
-`;
-
-const Social = styled(SocialMedia)`
-  margin: 73px 0 40px 0;
-`;
-
-const Submit = styled.input`
-  justify-self: center;
-  background: ${(props) => props.theme.colors.secondary};
-  border: 0;
-  border-radius: 15px;
-  font-family: "Lato", sans-serif;
-  font-size: 26.66px;
-  height: 55px;
-  margin-top: 47px;
-  width: 170px;
-
-  :hover {
-    background: ${(props) => props.theme.colors.secondaryLight};
-    cursor: pointer;
-  }
-`;
-
-const Input = styled.input`
-  border: none;
-  border-radius: 4px;
-  color: ${(props) => props.theme.colors.textBlack};
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
-  line-height: 1.65;
-  margin-bottom: 4px;
-  padding: 3px 14px;
-  width: 100%;
-`;
 
 const ContactForm = styled.form`
   display: grid;
@@ -102,6 +54,53 @@ const ContactForm = styled.form`
       justify-self: right;
     }
   }
+`;
+
+const Input = styled.input`
+  border: none;
+  border-radius: 4px;
+  color: ${(props) => props.theme.colors.textBlack};
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  line-height: 1.65;
+  margin-bottom: 4px;
+  padding: 3px 14px;
+  width: 100%;
+`;
+
+const TextArea = styled.textarea`
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  height: 153px;
+  line-height: 1.65;
+  padding: 11px 14px;
+  width: 324px;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    width: 100%;
+  }
+`;
+
+const Submit = styled.input`
+  justify-self: center;
+  background: ${(props) => props.theme.colors.secondary};
+  border: 0;
+  border-radius: 15px;
+  font-family: "Lato", sans-serif;
+  font-size: 26.66px;
+  height: 55px;
+  margin-top: 47px;
+  width: 170px;
+
+  :hover {
+    background: ${(props) => props.theme.colors.secondaryLight};
+    cursor: pointer;
+  }
+`;
+
+const Social = styled(SocialMedia)`
+  margin: 73px 0 40px 0;
 `;
 
 export default Contact;

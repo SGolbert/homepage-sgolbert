@@ -34,8 +34,6 @@ const PostContainer = styled.div`
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     grid-template-columns: 1fr 1fr;
-    /* grid-template-columns: 479px 479px; */
-    /* grid-column-gap: clamp(20px, 8.33vw, 120px); */
     grid-column-gap: clamp(20px, 5vw, 120px);
   }
 `;

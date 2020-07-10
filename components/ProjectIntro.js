@@ -44,9 +44,9 @@ const CardContainer = styled.div`
 
 const Img = styled.img`
   border-radius: 10px;
+  height: clamp(197px, 27.29vw, 393px);
   order: 0;
   width: clamp(226px, 33.33vw, 480px);
-  height: clamp(197px, 27.29vw, 393px);
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     order: ${(props) => (props.leftImg ? 0 : 2)};
@@ -78,6 +78,15 @@ const TextContainer = styled.div`
   }
 `;
 
+const Title = styled.h4`
+  margin-top: 42px;
+  text-align: center;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    margin-top: 0px;
+  }
+`;
+
 const ProjectLink = styled.a`
   font-size: 26.66px;
   margin-top: 40px;
@@ -89,19 +98,6 @@ const ProjectLink = styled.a`
         ? props.theme.colors.secondaryDark
         : props.theme.colors.secondary};
     cursor: pointer;
-  }
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    /* align-self: flex-end; */
-  }
-`;
-
-const Title = styled.h4`
-  margin-top: 42px;
-  text-align: center;
-
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    margin-top: 0px;
   }
 `;
 

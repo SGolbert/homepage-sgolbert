@@ -6,7 +6,6 @@ function Header() {
     <HeaderBody>
       <HeaderContainer>
         <InvisibleCheckbox type="checkbox" id="hamburg" />
-
         <HeaderLinks>
           <LinkItem>Home</LinkItem>
           <LinkItem>About</LinkItem>
@@ -33,14 +32,10 @@ function Header() {
   );
 }
 
-const InvisibleCheckbox = styled.input`
-  display: none;
-`;
-
 const HeaderBody = styled.div`
   align-items: center;
-  display: flex;
   background: ${(props) => props.theme.colors.primaryDark};
+  display: flex;
   justify-content: center;
   width: 100%;
 `;
@@ -49,11 +44,13 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
-  /* height: 65px; */
-  margin: 0px clamp(20px, 8.33vw, 120px);
+  padding: 0px clamp(20px, 8.33vw, 120px);
   max-width: 1440px;
   width: 100%;
+`;
+
+const InvisibleCheckbox = styled.input`
+  display: none;
 `;
 
 const HeaderLinks = styled.div`
@@ -80,7 +77,7 @@ const HeaderLinks = styled.div`
 const LinkItem = styled.h5`
   color: ${(props) => props.theme.colors.textWhite};
   font-size: 1.2rem;
-  margin: 20px 0;
+  margin: 30px 0;
 
   :hover {
     color: ${(props) => props.theme.colors.secondary};
@@ -88,34 +85,34 @@ const LinkItem = styled.h5`
   }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    margin: 13px 0;
+
     :not(:last-child) {
-      margin: 0 clamp(40px, 5vw, 80px) 0 0;
+      margin: 0px clamp(40px, 5vw, 80px) 0px 0;
     }
   }
 `;
 
 const HeaderSocialMedia = styled(SocialMedia)`
-  margin: 20px 0 20px 0;
-  /* align-self: auto; */
+  margin: 20px 0;
   flex: 1;
 
-  /* @media (min-width: ${(props) =>
-    props.theme.media_sizes.mobileTransition}) {
-    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
-  } */
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    margin: 17px 0;
+    flex: 0;
+  }
 `;
 
 const Hamburger = styled.svg`
   display: block;
 
+  /* :hover {
+    fill: ${(props) => props.theme.colors.secondary};
+    cursor: pointer;
+  } */
+
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     display: none;
-    margin: 20px clamp(60px, 8.33vw, 120px) 20px 0;
-
-    :hover {
-      fill: ${(props) => props.theme.colors.secondary};
-      cursor: pointer;
-    }
   }
 `;
 

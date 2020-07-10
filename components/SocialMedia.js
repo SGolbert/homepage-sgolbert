@@ -41,7 +41,6 @@ const ImgContainer = styled.div`
   display: flex;
   justify-self: right;
   order: 0;
-  /* padding: 0 clamp(30px, calc(8.33vw - 30px), 90px) 0 0; */
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     order: 2;
