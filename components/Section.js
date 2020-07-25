@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 function Section(props) {
   return (
-    <SectionBody bg={props.bg}>
+    <SectionBody id={props.title} bg={props.bg}>
       <SectionContainer>
         <SectionTitle>{props.title}</SectionTitle>
         {props.children}

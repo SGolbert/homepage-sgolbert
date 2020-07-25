@@ -17,9 +17,23 @@ function Contact() {
         <Submit id="submit" type="submit" value="Submit" />
       </ContactForm>
       <Social />
+      {/* <ContactSection>Testing</ContactSection> */}
     </Section>
   );
 }
+
+const ContactSection = styled(Section)`
+  position: relative;
+
+  &::after {
+    content: "LALALA";
+    width: 60px;
+    height: 4px;
+    background: red;
+    position: absolute;
+    bottom: 40px;
+  }
+`;
 
 const ContactForm = styled.form`
   display: grid;
@@ -72,9 +86,10 @@ const TextArea = styled.textarea`
   border-radius: 4px;
   font-family: "Lato", sans-serif;
   font-size: 15px;
-  height: 153px;
+  min-height: 153px;
   line-height: 1.65;
   padding: 11px 14px;
+  resize: vertical;
   width: 324px;
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {

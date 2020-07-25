@@ -7,6 +7,7 @@ import About from "components/About";
 import BlogTeaser from "components/BlogTeaser";
 import ProjectTeaser from "components/ProjectTeaser";
 import Contact from "components/Contact";
+import Separator from "components/Separator";
 import { createGlobalStyle } from "styled-components";
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         <About />
         <BlogTeaser />
         <ProjectTeaser />
+        <Separator />
         <Contact />
       </main>
 
@@ -85,5 +87,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     margin: 0;
     padding: 0;
+  }
+
+  a {
+    color: ${(props) => props.theme.colors.textWhite};
+    text-decoration: none;
   }
 `;

@@ -7,14 +7,24 @@ function Header() {
       <HeaderContainer>
         <InvisibleCheckbox type="checkbox" id="hamburg" />
         <HeaderLinks>
-          <LinkItem>Home</LinkItem>
-          <LinkItem>About</LinkItem>
-          <LinkItem>Blog</LinkItem>
-          <LinkItem>Projects</LinkItem>
-          <LinkItem>Contact</LinkItem>
+          <LinkItem>
+            <a href="/">Home</a>
+          </LinkItem>
+          <LinkItem>
+            <a href="#About">About</a>
+          </LinkItem>
+          <LinkItem>
+            <a href="#Blog">Blog</a>
+          </LinkItem>
+          <LinkItem>
+            <a href="#Projects">Projects</a>
+          </LinkItem>
+          <LinkItem>
+            <a href="#Contact">Contact</a>
+          </LinkItem>
         </HeaderLinks>
         <HeaderSocialMedia />
-        <label for="hamburg" class="hamburg">
+        <label htmlFor="hamburg" className="hamburg">
           <Hamburger
             width="30"
             height="30"
@@ -79,9 +89,8 @@ const LinkItem = styled.h5`
   font-size: 1.2rem;
   margin: 30px 0;
 
-  :hover {
+  a:hover {
     color: ${(props) => props.theme.colors.secondary};
-    cursor: pointer;
   }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
