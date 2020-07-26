@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import SocialMedia from "components/SocialMedia";
 
@@ -7,21 +8,21 @@ function Header() {
       <HeaderContainer>
         <InvisibleCheckbox type="checkbox" id="hamburg" />
         <HeaderLinks>
-          <LinkItem>
-            <a href="/">Home</a>
-          </LinkItem>
-          <LinkItem>
-            <a href="#About">About</a>
-          </LinkItem>
-          <LinkItem>
-            <a href="#Blog">Blog</a>
-          </LinkItem>
-          <LinkItem>
-            <a href="#Projects">Projects</a>
-          </LinkItem>
-          <LinkItem>
-            <a href="#Contact">Contact</a>
-          </LinkItem>
+          <Link href="/" passHref>
+            <LinkItem>Home</LinkItem>
+          </Link>
+          <Link href="/#About" passHref>
+            <LinkItem>About</LinkItem>
+          </Link>
+          <Link href="/#Blog" passHref>
+            <LinkItem>Blog</LinkItem>
+          </Link>
+          <Link href="/#Projects" passHref>
+            <LinkItem>Projects</LinkItem>
+          </Link>
+          <Link href="#Contact" passHref>
+            <LinkItem>Contact</LinkItem>
+          </Link>
         </HeaderLinks>
         <HeaderSocialMedia />
         <label htmlFor="hamburg" className="hamburg">
@@ -41,6 +42,12 @@ function Header() {
     </HeaderBody>
   );
 }
+
+const LinkTest = styled(Link)`
+  a {
+    color: red;
+  }
+`;
 
 const HeaderBody = styled.div`
   align-items: center;
@@ -84,13 +91,14 @@ const HeaderLinks = styled.div`
   }
 `;
 
-const LinkItem = styled.h5`
+const LinkItem = styled.a`
   color: ${(props) => props.theme.colors.textWhite};
   font-size: 1.2rem;
   margin: 30px 0;
 
-  a:hover {
+  :hover {
     color: ${(props) => props.theme.colors.secondary};
+    cursor: pointer;
   }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {

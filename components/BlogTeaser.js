@@ -6,15 +6,23 @@ import TeaserPost from "components/TeaserPost";
 const background = "linear-gradient(180deg, #001233 0%, #003087 100%)";
 
 function BlogTeaser(props) {
+  const numberOfPosts = props.blogPosts.length > 4 ? 4 : props.blogPosts.length;
+
+  const posts = props.blogPosts.slice(0, numberOfPosts);
+
   return (
     <Section title="Blog" bg={background}>
       <PostContainer>
-        <TeaserPost />
+        {posts.map((post) => (
+          <TeaserPost {...post} key={post.id} />
+        ))}
+
+        {/* <TeaserPost />
         <TeaserPost />
         <TeaserPost displayOnlyDesktop />
-        <TeaserPost displayOnlyDesktop />
+        <TeaserPost displayOnlyDesktop /> */}
       </PostContainer>
-      <Link href="/">
+      <Link href="/" passHref>
         <BlogLink>Go to blog site</BlogLink>
       </Link>
     </Section>
