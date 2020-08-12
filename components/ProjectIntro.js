@@ -4,17 +4,22 @@ import styled from "styled-components";
 function ProjectIntro(props) {
   return (
     <CardContainer {...props}>
-      <Img
-        {...props}
-        src="https://www.fillmurray.com/226/197"
-        alt="Post Intro Image"
-      ></Img>
+      <ImgLink leftImg={props.leftImg}>
+        <Link href="/projects/[id]" as={`/projects/${props.id}`}>
+          <a>
+            <Img src={props.teaser} alt="Post Intro Image"></Img>
+          </a>
+        </Link>
+      </ImgLink>
       <TextContainer {...props}>
-        <Title>Project's title</Title>
-        <p>
-          Project description <br /> Project description
-          <br /> Project description
-        </p>
+        <Title>
+          <Link href="/projects/[id]" as={`/projects/${props.id}`}>
+            <a>{props.title}</a>
+          </Link>
+        </Title>
+        <Description>
+          {props.date} - {props.excerpt}
+        </Description>
         <Link href="/">
           <ProjectLink {...props}>Go to site</ProjectLink>
         </Link>
@@ -45,6 +50,13 @@ const CardContainer = styled.div`
 const Img = styled.img`
   border-radius: 10px;
   height: clamp(197px, 27.29vw, 393px);
+  object-fit: cover;
+  width: clamp(226px, 33.33vw, 480px);
+`;
+
+const ImgLink = styled.div`
+  border-radius: 10px;
+  height: clamp(197px, 27.29vw, 393px);
   order: 0;
   width: clamp(226px, 33.33vw, 480px);
 
@@ -61,6 +73,21 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
+
+  a {
+    color: ${(props) =>
+      props.lightThemed
+        ? props.theme.colors.textBlack
+        : props.theme.colors.textWhite};
+  }
+
+  a:hover {
+    color: ${(props) =>
+      props.lightThemed
+        ? props.theme.colors.secondaryDark
+        : props.theme.colors.secondary};
+    cursor: pointer;
+  }
 
   p {
     flex: 1;
@@ -79,6 +106,10 @@ const TextContainer = styled.div`
 `;
 
 const Title = styled.h4`
+  color: ${(props) =>
+    props.lightThemed
+      ? props.theme.colors.textBlack
+      : props.theme.colors.textWhite};
   margin-top: 42px;
   text-align: center;
 
@@ -87,18 +118,19 @@ const Title = styled.h4`
   }
 `;
 
+const Description = styled.p`
+  margin-top: 7px;
+  text-align: center;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    text-align: left;
+  }
+`;
+
 const ProjectLink = styled.a`
   font-size: 26.66px;
   margin-top: 40px;
   text-align: center;
-
-  :hover {
-    color: ${(props) =>
-      props.lightThemed
-        ? props.theme.colors.secondaryDark
-        : props.theme.colors.secondary};
-    cursor: pointer;
-  }
 `;
 
 export default ProjectIntro;

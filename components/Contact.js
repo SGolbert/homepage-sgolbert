@@ -4,10 +4,23 @@ import SocialMedia from "components/SocialMedia";
 
 const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
 
+function handleSubmit(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+
+  fetch("/api/send-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(Object.fromEntries(data)),
+  });
+}
+
 function Contact() {
   return (
     <Section title="Contact" bg={background}>
-      <ContactForm>
+      <ContactForm onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <Input type="text" id="name" name="name" />
         <label htmlFor="email">Email</label>

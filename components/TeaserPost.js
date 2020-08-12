@@ -4,7 +4,11 @@ import styled from "styled-components";
 function TeaserPost(props) {
   return (
     <PostContainer {...props}>
-      <Img src={props.teaser} alt="Post Intro Image"></Img>
+      <Link href="/posts/[id]" as={`/posts/${props.id}`}>
+        <a>
+          <Img src={props.teaser} alt="Post Intro Image"></Img>
+        </a>
+      </Link>
       <Title>
         <Link href="/posts/[id]" as={`/posts/${props.id}`}>
           <a>{props.title}</a>

@@ -4,17 +4,18 @@ import matter from "gray-matter";
 import remark from "remark";
 import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "blog-posts");
+const blogPostDir = path.join(process.cwd(), "blog-posts");
+const projectPostDir = path.join(process.cwd(), "project-posts");
 
-export function getSortedPostsData() {
+function getSortedPosts(directory) {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs.readdirSync(directory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
+    const fullPath = path.join(directory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     // Use gray-matter to parse the post metadata section
@@ -36,8 +37,16 @@ export function getSortedPostsData() {
   });
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export function getSortedBlogPosts() {
+  return getSortedPosts(blogPostDir);
+}
+
+export function getSortedProjectPosts() {
+  return getSortedPosts(projectPostDir);
+}
+
+function getAllPostIds(directory) {
+  const fileNames = fs.readdirSync(directory);
 
   // Returns an array that looks like this:
   // [
@@ -61,8 +70,16 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+export function getAllBlogPostIds() {
+  return getAllPostIds(blogPostDir);
+}
+
+export function getAllProjectPostIds() {
+  return getAllPostIds(projectPostDir);
+}
+
+async function getPostData(directory, id) {
+  const fullPath = path.join(directory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
   // Use gray-matter to parse the post metadata section
@@ -80,4 +97,12 @@ export async function getPostData(id) {
     contentHtml,
     ...matterResult.data,
   };
+}
+
+export async function getBlogPostData(id) {
+  return getPostData(blogPostDir, id);
+}
+
+export async function getProjectPostData(id) {
+  return getPostData(projectPostDir, id);
 }

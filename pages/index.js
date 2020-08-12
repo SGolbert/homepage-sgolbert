@@ -5,18 +5,20 @@ import Hero from "components/Hero";
 import About from "components/About";
 import BlogTeaser from "components/BlogTeaser";
 import ProjectTeaser from "components/ProjectTeaser";
-import { getSortedPostsData } from "utils/posts.js";
+import { getSortedBlogPosts, getSortedProjectPosts } from "utils/posts.js";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allBlogPostsData = getSortedBlogPosts();
+  const allProjectPostsData = getSortedProjectPosts();
   return {
     props: {
-      allPostsData,
+      allBlogPostsData,
+      allProjectPostsData,
     },
   };
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allBlogPostsData, allProjectPostsData }) {
   return (
     <div>
       <GlobalStyle />
@@ -28,8 +30,8 @@ export default function Home({ allPostsData }) {
       <Layout>
         <Hero />
         <About />
-        <BlogTeaser blogPosts={allPostsData} />
-        <ProjectTeaser />
+        <BlogTeaser blogPosts={allBlogPostsData} />
+        <ProjectTeaser projectPosts={allProjectPostsData} />
       </Layout>
     </div>
   );

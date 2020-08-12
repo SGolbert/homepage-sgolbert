@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
-import { getAllBlogPostIds, getBlogPostData } from "utils/posts";
+import { getAllProjectPostIds, getProjectPostData } from "utils/posts";
 import Layout from "components/Layout";
 import Section from "components/Section";
 
 export async function getStaticProps({ params }) {
-  const postData = await getBlogPostData(params.id);
+  const postData = await getProjectPostData(params.id);
   return {
     props: {
       postData,
@@ -15,7 +15,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllBlogPostIds();
+  const paths = getAllProjectPostIds();
   return {
     paths,
     fallback: false,
@@ -45,7 +45,7 @@ export default function Post({ postData }) {
             <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           </Article>
           <Link href="/blog" passHref>
-            <BlogLink>Go back to blog site</BlogLink>
+            <ProjectLink>Go back to projects site</ProjectLink>
           </Link>
         </Section>
       </Layout>
@@ -78,7 +78,7 @@ const Img = styled.img`
   width: clamp(325px, 66.6vw, 959px);
 `;
 
-const BlogLink = styled.a`
+const ProjectLink = styled.a`
   color: ${(props) => props.theme.colors.textWhite};
   font-size: 1.333em;
   margin: 33px auto 66px 26px;

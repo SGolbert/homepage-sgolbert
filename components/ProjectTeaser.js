@@ -1,15 +1,26 @@
 import styled from "styled-components";
 import Section from "components/Section";
 import ProjectIntro from "components/ProjectIntro";
+import TeaserPost from "components/TeaserPost";
 
 const background = "linear-gradient(180deg, #003087 0%, #001233 100%)";
 
-function ProjectTeaser() {
+function ProjectTeaser(props) {
+  const numberOfPosts =
+    props.projectPosts.length > 4 ? 4 : props.projectPosts.length;
+
+  const posts = props.projectPosts.slice(0, numberOfPosts);
+
   return (
     <Section title="Projects" bg={background}>
       <ProjectContainer>
-        <ProjectIntro />
-        <ProjectIntro lightThemed leftImg />
+        {posts.map((post, index) =>
+          index % 2 === 0 ? (
+            <ProjectIntro {...post} key={post.id} />
+          ) : (
+            <ProjectIntro {...post} key={post.id} lightThemed leftImg />
+          )
+        )}
       </ProjectContainer>
     </Section>
   );

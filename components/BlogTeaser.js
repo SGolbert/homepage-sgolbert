@@ -23,7 +23,7 @@ function BlogTeaser(props) {
         <TeaserPost displayOnlyDesktop /> */}
       </PostContainer>
       <Link href="/" passHref>
-        <BlogLink>Go to blog site</BlogLink>
+        <BlogLink>See all blog posts</BlogLink>
       </Link>
     </Section>
   );
@@ -58,7 +58,7 @@ const BlogLink = styled.a`
   }
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    margin: 67px 200px 50px auto;
+    margin: 67px auto 50px auto;
   }
 `;
 
