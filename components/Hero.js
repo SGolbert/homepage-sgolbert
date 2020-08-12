@@ -5,8 +5,8 @@ function Hero() {
     <HeroBody>
       <HeroContainer>
         <HeroText>
-          I am Sebastian <br /> Full Stack Web Developer{" "}
-          {process.env.SENDGRID_API_KEY}
+          I am Sebastian Golbert
+          <br /> Full Stack Web Developer {process.env.SENDGRID_API_KEY}
         </HeroText>
       </HeroContainer>
     </HeroBody>
