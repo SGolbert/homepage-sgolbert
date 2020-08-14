@@ -16,15 +16,10 @@ function BlogTeaser(props) {
         {posts.map((post) => (
           <TeaserPost {...post} key={post.id} />
         ))}
-
-        {/* <TeaserPost />
-        <TeaserPost />
-        <TeaserPost displayOnlyDesktop />
-        <TeaserPost displayOnlyDesktop /> */}
       </PostContainer>
-      <Link href="/" passHref>
+      {/* <Link href="/" passHref>
         <BlogLink>See all blog posts</BlogLink>
-      </Link>
+      </Link> */}
     </Section>
   );
 }

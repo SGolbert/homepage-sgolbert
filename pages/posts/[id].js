@@ -26,6 +26,11 @@ const background =
   "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
 
 export default function Post({ postData }) {
+  const content = postData.contentHtml.replace(
+    /<a href=/g,
+    '<a rel="noopener noreferrer" target="_blank" href='
+  );
+
   return (
     <div>
       <Head>
@@ -41,10 +46,11 @@ export default function Post({ postData }) {
               {" "}
               {postData.date} by {postData.author}{" "}
             </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
+            <div dangerouslySetInnerHTML={{ __html: content }} />
           </Article>
-          <Link href="/blog" passHref>
-            <BlogLink>Go back to blog site</BlogLink>
+          <Link href="/" passHref>
+            <BlogLink>Go back</BlogLink>
           </Link>
         </Section>
       </Layout>
@@ -53,8 +59,22 @@ export default function Post({ postData }) {
 }
 
 const Article = styled.article`
+  max-width: 1200px;
+
+  a {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    font-weight: bold;
+  }
+
   div {
     margin: 0 26px 33px 26px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
   }
 
   p,

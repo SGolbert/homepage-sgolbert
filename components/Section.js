@@ -28,6 +28,7 @@ const SectionContainer = styled.div`
 
 const SectionTitle = styled.h2`
   margin-top: 76px;
+  text-align: center;
 `;
 
 export default Section;

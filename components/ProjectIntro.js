@@ -20,9 +20,14 @@ function ProjectIntro(props) {
         <Description>
           {props.date} - {props.excerpt}
         </Description>
-        <Link href="/">
-          <ProjectLink {...props}>Go to site</ProjectLink>
-        </Link>
+        <ProjectLink
+          rel="noopener noreferrer"
+          target="_blank"
+          href={props.link}
+          {...props}
+        >
+          Go to site
+        </ProjectLink>
       </TextContainer>
     </CardContainer>
   );
@@ -51,14 +56,13 @@ const Img = styled.img`
   border-radius: 10px;
   height: clamp(197px, 27.29vw, 393px);
   object-fit: cover;
-  width: clamp(226px, 33.33vw, 480px);
+  /* width: clamp(226px, 33.33vw, 480px); */
+  width: 100%;
 `;
 
 const ImgLink = styled.div`
-  border-radius: 10px;
-  height: clamp(197px, 27.29vw, 393px);
-  order: 0;
-  width: clamp(226px, 33.33vw, 480px);
+  display: flex;
+  justify-content: center;
 
   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
     order: ${(props) => (props.leftImg ? 0 : 2)};
@@ -66,6 +70,7 @@ const ImgLink = styled.div`
 `;
 
 const TextContainer = styled.div`
+  align-items: center;
   color: ${(props) =>
     props.lightThemed
       ? props.theme.colors.textBlack

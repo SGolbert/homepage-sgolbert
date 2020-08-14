@@ -7,9 +7,7 @@ const background =
 function About() {
   return (
     <Section title="About" bg={background}>
-      <Subtitle>
-        This is the <br /> stack I use
-      </Subtitle>
+      <Subtitle>These are my favorite tools</Subtitle>
       <StackIcons>
         <Img width="90" height="80" src="react.svg" alt="React"></Img>
         <Img width="132" height="80" src="nextjs.svg" alt="Next"></Img>

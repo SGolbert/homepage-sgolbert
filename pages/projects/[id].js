@@ -26,6 +26,11 @@ const background =
   "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
 
 export default function Post({ postData }) {
+  const content = postData.contentHtml.replace(
+    /<a href=/g,
+    '<a rel="noopener noreferrer" target="_blank" href='
+  );
+
   return (
     <div>
       <Head>
@@ -41,10 +46,10 @@ export default function Post({ postData }) {
               {" "}
               {postData.date} by {postData.author}{" "}
             </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            <div dangerouslySetInnerHTML={{ __html: content }} />
           </Article>
-          <Link href="/blog" passHref>
-            <ProjectLink>Go back to projects site</ProjectLink>
+          <Link href="/" passHref>
+            <ProjectLink>Go back</ProjectLink>
           </Link>
         </Section>
       </Layout>
@@ -53,8 +58,22 @@ export default function Post({ postData }) {
 }
 
 const Article = styled.article`
+  max-width: 1200px;
+
+  a {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    font-weight: bold;
+  }
+
   div {
     margin: 0 26px 33px 26px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
   }
 
   p,
@@ -74,7 +93,7 @@ const Img = styled.img`
   object-fit: cover;
   height: clamp(260px, 32.1vw, 462px);
   margin: 47px 0 42px 0;
-  width: clamp(325px, 66.6vw, 959px);
+  width: clamp(325px, 66.6vw, 800px);
 `;
 
 const ProjectLink = styled.a`
