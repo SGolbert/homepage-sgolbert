@@ -26,7 +26,6 @@ const background =
   "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
 
 export default function Post({ postData }) {
-  console.log(postData.contentHtml);
   return (
     <div>
       <Head>

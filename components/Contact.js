@@ -1,23 +1,38 @@
 import styled from "styled-components";
+import { useState } from "react";
 import Section from "components/Section";
 import SocialMedia from "components/SocialMedia";
 
 const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
 
-function handleSubmit(event) {
-  event.preventDefault();
-  const data = new FormData(event.target);
-
-  fetch("/api/send-email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(Object.fromEntries(data)),
-  });
-}
-
 function Contact() {
+  const [messageSent, setMessageSent] = useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+
+    fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(Object.fromEntries(data)),
+    }).then((response) => {
+      if (response.status === 200) {
+        setMessageSent(true);
+      }
+    });
+  }
+
+  if (messageSent) {
+    return (
+      <Section title="Message sent!" bg={background}>
+        <Social />
+      </Section>
+    );
+  }
+
   return (
     <Section title="Contact" bg={background}>
       <ContactForm onSubmit={handleSubmit}>
