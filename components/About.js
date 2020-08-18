@@ -15,6 +15,14 @@ function About() {
         <Img width="56" height="80" src="css.svg" alt="CSS"></Img>
         <Img width="80" height="80" src="javascript.svg" alt="JavaScript"></Img>
         <Img width="80" height="80" src="vscode.svg" alt="VS Code"></Img>
+        <Img width="56" height="80" src="Node.svg" alt="Node.js"></Img>
+        {/* <Img width="80" height="80" src="Flask.svg" alt="Flask"></Img> */}
+        <Img width="115" height="80" src="mongodb.png" alt="Mongo"></Img>
+      </StackIcons>
+      <Subtitle>And I want to learn these</Subtitle>
+      <StackIcons>
+        <Img width="90" height="80" src="Typescript.svg" alt="Typescript"></Img>
+        <Img width="110" height="80" src="AWS.svg" alt="AWS"></Img>
       </StackIcons>
     </Section>
   );
@@ -48,9 +56,9 @@ const StackIcons = styled.div`
   margin: 42px 20px 58px 20px;
   width: 100%;
 
-  @media (min-width: 450px) {
-    margin: 192px 0 58px 0;
-    grid-template-columns: repeat(auto-fit, 150px 150px 150px);
+  @media (min-width: 600px) {
+    margin: 92px 0 58px 0;
+    grid-template-columns: repeat(auto-fit, 150px 150px 150px 150px);
   }
 `;
 

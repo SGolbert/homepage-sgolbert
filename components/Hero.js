@@ -36,10 +36,11 @@ const HeroBody = styled.div`
 
 const HeroContainer = styled.div`
   align-items: flex-end;
-  background: url("hero.webp");
+  background: url("hero2.jpeg");
+  /* background: url("hero.webp"); */
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: left;
   display: flex;
   height: 890px;
   justify-content: center;

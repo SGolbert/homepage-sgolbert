@@ -71,6 +71,7 @@ const Article = styled.article`
   div {
     margin: 0 30px 33px 30px;
     max-width: 720px;
+    width: calc(100vw - 60px);
   }
 
   h3 {
