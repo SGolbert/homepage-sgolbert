@@ -1,5 +1,5 @@
 ---
-title: "Movie Database Site"
+title: "Movie Database"
 date: "2020-08-01"
 teaser: "/projects/movieDB.png"
 excerpt: "Movie Database site with the most popular movies and search functionality"

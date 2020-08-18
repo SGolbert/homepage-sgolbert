@@ -56,8 +56,9 @@ const Img = styled.img`
   border-radius: 10px;
   height: clamp(197px, 27.29vw, 393px);
   object-fit: cover;
-  /* width: clamp(226px, 33.33vw, 480px); */
-  width: 100%;
+  width: clamp(226px, 33.33vw, 480px);
+  /* width: 100%;
+  max-width: 480px; */
 `;
 
 const ImgLink = styled.div`
