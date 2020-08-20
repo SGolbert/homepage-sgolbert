@@ -6,11 +6,15 @@ import SocialMedia from "components/SocialMedia";
 const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
 
 function Contact() {
-  const [messageSent, setMessageSent] = useState(false);
+  const [messageStatus, setMessageStatus] = useState("typing");
 
   function handleSubmit(event) {
     event.preventDefault();
+    setMessageStatus("sending");
     const data = new FormData(event.target);
+
+    const form = document.querySelector("form");
+    form.reset();
 
     fetch("/api/send-email", {
       method: "POST",
@@ -20,35 +24,56 @@ function Contact() {
       body: JSON.stringify(Object.fromEntries(data)),
     }).then((response) => {
       if (response.status === 200) {
-        setMessageSent(true);
+        setMessageStatus("sent");
       }
     });
   }
 
-  if (messageSent) {
-    return (
-      <Section title="Message sent!" bg={background}>
-        <Social />
-      </Section>
-    );
-  }
+  // if (messageStatus === "sent") {
+  //   return (
+  //     <Section title="Message sent!" bg={background}>
+  //       <div style={{ height: "364px", width: "10px" }} />
+  //       <Social />
+  //     </Section>
+  //   );
+  // }
 
   return (
     <Section title="Contact" bg={background}>
       <ContactForm onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
-        <Input type="text" id="name" name="name" />
+        <Input type="text" id="name" name="name" required />
         <label htmlFor="email">Email</label>
         <Input type="email" id="email" name="email" />
         <label htmlFor="message">Message</label>
-        <TextArea id="message" name="message" />
-        <Submit id="submit" type="submit" value="Submit" />
+        <TextArea id="message" name="message" required />
+
+        {messageStatus === "sending" ? (
+          <Submit id="submit" type="submit" value="Submit" disabled />
+        ) : (
+          <Submit id="submit" type="submit" value="Submit" />
+        )}
       </ContactForm>
+      {messageStatus === "sent" ? <SentMessage>Message sent!</SentMessage> : ""}
       <Social />
       {/* <ContactSection>Testing</ContactSection> */}
     </Section>
   );
 }
+
+const SentMessage = styled.div`
+  width: 100%;
+  margin-top: 33px;
+  margin-bottom: -33px;
+  max-width: 500px;
+  text-align: center;
+
+  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+    margin-top: 33px;
+    margin-bottom: -66px;
+    text-align: right;
+  }
+`;
 
 const ContactSection = styled(Section)`
   position: relative;

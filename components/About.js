@@ -23,6 +23,7 @@ function About() {
       <StackIcons>
         <Img width="90" height="80" src="Typescript.svg" alt="Typescript"></Img>
         <Img width="110" height="80" src="AWS.svg" alt="AWS"></Img>
+        <Img width="110" height="80" src="svelte.svg" alt="Svelte"></Img>
       </StackIcons>
     </Section>
   );
