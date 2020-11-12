@@ -1,3 +1,4 @@
+import { Post, PostHeader, PostId, ProjectHeader, Project } from "./types";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -7,7 +8,7 @@ import html from "remark-html";
 const blogPostDir = path.join(process.cwd(), "blog-posts");
 const projectPostDir = path.join(process.cwd(), "project-posts");
 
-function getSortedPosts(directory) {
+function getSortedPosts(directory: string): PostHeader[] | ProjectHeader[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(directory);
   const allPostsData = fileNames.map((fileName) => {
@@ -24,7 +25,7 @@ function getSortedPosts(directory) {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data,
+      ...(matterResult.data as Omit<PostHeader | ProjectHeader, "id">),
     };
   });
   // Sort posts by date
@@ -37,30 +38,17 @@ function getSortedPosts(directory) {
   });
 }
 
-export function getSortedBlogPosts() {
+export function getSortedBlogPosts(): PostHeader[] {
   return getSortedPosts(blogPostDir);
 }
 
-export function getSortedProjectPosts() {
-  return getSortedPosts(projectPostDir);
+export function getSortedProjectPosts(): ProjectHeader[] {
+  return getSortedPosts(projectPostDir) as ProjectHeader[];
 }
 
-function getAllPostIds(directory) {
+function getAllPostIds(directory: string) {
   const fileNames = fs.readdirSync(directory);
 
-  // Returns an array that looks like this:
-  // [
-  //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
-  //   }
-  // ]
   return fileNames.map((fileName) => {
     return {
       params: {
@@ -70,15 +58,18 @@ function getAllPostIds(directory) {
   });
 }
 
-export function getAllBlogPostIds() {
+export function getAllBlogPostIds(): PostId[] {
   return getAllPostIds(blogPostDir);
 }
 
-export function getAllProjectPostIds() {
+export function getAllProjectPostIds(): PostId[] {
   return getAllPostIds(projectPostDir);
 }
 
-async function getPostData(directory, id) {
+async function getPostData(
+  directory: string,
+  id: string
+): Promise<Post | Project> {
   const fullPath = path.join(directory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
@@ -95,14 +86,14 @@ async function getPostData(directory, id) {
   return {
     id,
     contentHtml,
-    ...matterResult.data,
+    ...(matterResult.data as Omit<PostHeader | ProjectHeader, "id">),
   };
 }
 
-export async function getBlogPostData(id) {
-  return getPostData(blogPostDir, id);
+export async function getBlogPostData(id: string): Promise<Post> {
+  return getPostData(blogPostDir, id) as Promise<Post>;
 }
 
-export async function getProjectPostData(id) {
-  return getPostData(projectPostDir, id);
+export async function getProjectPostData(id: string): Promise<Project> {
+  return getPostData(projectPostDir, id) as Promise<Project>;
 }

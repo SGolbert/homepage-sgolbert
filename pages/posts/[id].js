@@ -1,9 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
-import styled from "styled-components";
-import { getAllBlogPostIds, getBlogPostData } from "utils/posts";
-import Layout from "components/Layout";
-import Section from "components/Section";
+import Head from 'next/head';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { getAllBlogPostIds, getBlogPostData } from 'utils/posts';
+import Layout from 'components/Layout';
+import Section from 'components/Section';
 
 export async function getStaticProps({ params }) {
   const postData = await getBlogPostData(params.id);
@@ -22,13 +22,12 @@ export async function getStaticPaths() {
   };
 }
 
-const background =
-  "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
+const background = 'linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)';
 
 export default function Post({ postData }) {
   const content = postData.contentHtml.replace(
     /<a href=/g,
-    '<a rel="noopener noreferrer" target="_blank" href='
+    '<a rel="noopener noreferrer" target="_blank" href=',
   );
 
   return (
@@ -40,11 +39,15 @@ export default function Post({ postData }) {
         <Section title={postData.title} bg={background}>
           {/* <h1>{postData.title}</h1> */}
 
-          <Img src={postData.teaser} alt="Post Intro Image"></Img>
+          <Img src={postData.teaser} alt="Post Intro Image" />
           <Article>
             <div>
-              {" "}
-              {postData.date} by {postData.author}{" "}
+              {' '}
+              {postData.date}
+              {' '}
+              by
+              {postData.author}
+              {' '}
             </div>
             {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
             <div dangerouslySetInnerHTML={{ __html: content }} />

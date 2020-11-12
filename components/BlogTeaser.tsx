@@ -1,11 +1,10 @@
-import Link from "next/link";
 import styled from "styled-components";
 import Section from "components/Section";
 import TeaserPost from "components/TeaserPost";
 
 const background = "linear-gradient(180deg, #001233 0%, #003087 100%)";
 
-function BlogTeaser(props) {
+function BlogTeaser(props): JSX.Element {
   const numberOfPosts = props.blogPosts.length > 4 ? 4 : props.blogPosts.length;
 
   const posts = props.blogPosts.slice(0, numberOfPosts);
@@ -41,20 +40,20 @@ const PostContainer = styled.div`
   }
 `;
 
-const BlogLink = styled.a`
-  color: ${(props) => props.theme.colors.textWhite};
-  font-size: 1.777em;
-  margin: 66px 0 54px 0;
-  text-align: center;
+// const BlogLink = styled.a`
+//   color: ${(props) => props.theme.colors.textWhite};
+//   font-size: 1.777em;
+//   margin: 66px 0 54px 0;
+//   text-align: center;
 
-  :hover {
-    color: ${(props) => props.theme.colors.secondary};
-    cursor: pointer;
-  }
+//   :hover {
+//     color: ${(props) => props.theme.colors.secondary};
+//     cursor: pointer;
+//   }
 
-  @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
-    margin: 67px auto 50px auto;
-  }
-`;
+//   @media (min-width: ${(props) => props.theme.media_sizes.mobileTransition}) {
+//     margin: 67px auto 50px auto;
+//   }
+// `;
 
 export default BlogTeaser;

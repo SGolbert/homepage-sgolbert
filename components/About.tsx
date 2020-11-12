@@ -4,7 +4,7 @@ import Section from "components/Section";
 const background =
   "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
 
-function About() {
+function About(): JSX.Element {
   return (
     <Section title="About" bg={background}>
       <Subtitle>These are my favorite tools</Subtitle>

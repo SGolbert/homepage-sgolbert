@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Layout from "components/Layout";
+import styled from 'styled-components';
+import Layout from 'components/Layout';
 
 export default function Custom404() {
   return (

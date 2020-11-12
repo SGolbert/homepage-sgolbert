@@ -5,9 +5,10 @@ import Hero from "components/Hero";
 import About from "components/About";
 import BlogTeaser from "components/BlogTeaser";
 import ProjectTeaser from "components/ProjectTeaser";
-import { getSortedBlogPosts, getSortedProjectPosts } from "utils/posts.js";
+import { getSortedBlogPosts, getSortedProjectPosts } from "utils/posts";
+import { IndexProps, IndexStaticProps } from "./types";
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<IndexStaticProps> {
   const allBlogPostsData = getSortedBlogPosts();
   const allProjectPostsData = getSortedProjectPosts();
   return {
@@ -18,7 +19,10 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ allBlogPostsData, allProjectPostsData }) {
+export default function Home({
+  allBlogPostsData,
+  allProjectPostsData,
+}: IndexProps): JSX.Element {
   return (
     <div>
       <GlobalStyle />
