@@ -2,9 +2,11 @@ import styled from "styled-components";
 import Section from "components/Section";
 import TeaserPost from "components/TeaserPost";
 
+import { BlogTeaserProps } from "./types";
+
 const background = "linear-gradient(180deg, #001233 0%, #003087 100%)";
 
-function BlogTeaser(props): JSX.Element {
+function BlogTeaser(props: BlogTeaserProps): JSX.Element {
   const numberOfPosts = props.blogPosts.length > 4 ? 4 : props.blogPosts.length;
 
   const posts = props.blogPosts.slice(0, numberOfPosts);

@@ -1,19 +1,25 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Section from "components/Section";
 import SocialMedia from "components/SocialMedia";
 
 const background = "linear-gradient(180deg, #001233 98.1%, #19A400 100%)";
 
-function Contact() {
+function Contact(): JSX.Element {
   const [messageStatus, setMessageStatus] = useState("typing");
 
-  function handleSubmit(event) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessageStatus("sending");
-    const data = new FormData(event.target);
 
     const form = document.querySelector("form");
+
+    if (!form) {
+      setMessageStatus("error");
+      throw new Error("Form not found!");
+    }
+
+    const data = new FormData(form);
     form.reset();
 
     fetch("/api/send-email", {
@@ -25,18 +31,12 @@ function Contact() {
     }).then((response) => {
       if (response.status === 200) {
         setMessageStatus("sent");
+      } else {
+        console.log("Sendgrid error:", response);
+        setMessageStatus("error");
       }
     });
   }
-
-  // if (messageStatus === "sent") {
-  //   return (
-  //     <Section title="Message sent!" bg={background}>
-  //       <div style={{ height: "364px", width: "10px" }} />
-  //       <Social />
-  //     </Section>
-  //   );
-  // }
 
   return (
     <Section title="Contact" bg={background}>
@@ -55,6 +55,11 @@ function Contact() {
         )}
       </ContactForm>
       {messageStatus === "sent" ? <SentMessage>Message sent!</SentMessage> : ""}
+      {messageStatus === "error" ? (
+        <SentMessage>Message could not be sent!</SentMessage>
+      ) : (
+        ""
+      )}
       <Social />
       {/* <ContactSection>Testing</ContactSection> */}
     </Section>
@@ -75,18 +80,18 @@ const SentMessage = styled.div`
   }
 `;
 
-const ContactSection = styled(Section)`
-  position: relative;
+// const ContactSection = styled(Section)`
+//   position: relative;
 
-  &::after {
-    content: "LALALA";
-    width: 60px;
-    height: 4px;
-    background: red;
-    position: absolute;
-    bottom: 40px;
-  }
-`;
+//   &::after {
+//     content: "LALALA";
+//     width: 60px;
+//     height: 4px;
+//     background: red;
+//     position: absolute;
+//     bottom: 40px;
+//   }
+// `;
 
 const ContactForm = styled.form`
   display: grid;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { SectionProps } from "./types";
 
-function Section(props) {
+function Section(props: SectionProps): JSX.Element {
   return (
     <SectionBody id={props.title} bg={props.bg}>
       <SectionContainer>
@@ -12,7 +13,7 @@ function Section(props) {
 }
 
 const SectionBody = styled.section`
-  background: ${(props) => props.bg};
+  background: ${(props: { bg: string }) => props.bg};
   display: flex;
   justify-content: center;
   width: 100%;
