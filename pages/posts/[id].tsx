@@ -1,12 +1,19 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { getAllBlogPostIds, getBlogPostData } from 'utils/posts';
-import Layout from 'components/Layout';
-import Section from 'components/Section';
+import Head from "next/head";
+import Link from "next/link";
+import styled from "styled-components";
+import { getAllBlogPostIds, getBlogPostData } from "utils/posts";
+import Layout from "components/Layout";
+import Section from "components/Section";
+import { Post as PostType, PostId } from "utils/types";
 
-export async function getStaticProps({ params }) {
-  const postData = await getBlogPostData(params.id);
+export async function getStaticProps(props: {
+  params: { id: string };
+}): Promise<{
+  props: {
+    postData: PostType;
+  };
+}> {
+  const postData = await getBlogPostData(props.params.id);
   return {
     props: {
       postData,
@@ -14,7 +21,10 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<{
+  paths: PostId[];
+  fallback: false;
+}> {
   const paths = getAllBlogPostIds();
   return {
     paths,
@@ -22,12 +32,17 @@ export async function getStaticPaths() {
   };
 }
 
-const background = 'linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)';
+const background =
+  "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)";
 
-export default function Post({ postData }) {
+export default function Post({
+  postData,
+}: {
+  postData: PostType;
+}): JSX.Element {
   const content = postData.contentHtml.replace(
     /<a href=/g,
-    '<a rel="noopener noreferrer" target="_blank" href=',
+    '<a rel="noopener noreferrer" target="_blank" href='
   );
 
   return (
@@ -42,12 +57,9 @@ export default function Post({ postData }) {
           <Img src={postData.teaser} alt="Post Intro Image" />
           <Article>
             <div>
-              {' '}
-              {postData.date}
-              {' '}
-              by
-              {postData.author}
-              {' '}
+              {" "}
+              {postData.date} by
+              {postData.author}{" "}
             </div>
             {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
             <div dangerouslySetInnerHTML={{ __html: content }} />

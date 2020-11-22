@@ -6,7 +6,16 @@ import About from "components/About";
 import BlogTeaser from "components/BlogTeaser";
 import ProjectTeaser from "components/ProjectTeaser";
 import { getSortedBlogPosts, getSortedProjectPosts } from "utils/posts";
-import { IndexProps, IndexStaticProps } from "./types";
+import { PostHeader, ProjectHeader } from "utils/types";
+
+type IndexProps = {
+  allBlogPostsData: PostHeader[];
+  allProjectPostsData: ProjectHeader[];
+};
+
+type IndexStaticProps = {
+  props: IndexProps;
+};
 
 export async function getStaticProps(): Promise<IndexStaticProps> {
   const allBlogPostsData = getSortedBlogPosts();
