@@ -1,7 +1,12 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { PostHeader } from "utils/types";
 
-function TeaserPost(props) {
+type TeaserPostProps = PostHeader & {
+  displayOnlyDesktop?: boolean;
+};
+
+function TeaserPost(props: TeaserPostProps): JSX.Element {
   return (
     <PostContainer {...props}>
       <Link href="/posts/[id]" as={`/posts/${props.id}`}>
@@ -22,7 +27,7 @@ function TeaserPost(props) {
   );
 }
 
-const PostContainer = styled.div`
+const PostContainer = styled.div<{ displayOnlyDesktop?: boolean }>`
   background: ${(props) => props.theme.colors.primary};
   border-radius: 10px;
   display: ${({ displayOnlyDesktop }) =>

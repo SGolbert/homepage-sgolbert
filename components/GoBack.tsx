@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function GoBack() {
+export default function GoBack(): JSX.Element {
   const router = useRouter();
 
   return (

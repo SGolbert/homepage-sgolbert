@@ -4,8 +4,9 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 import Contact from "components/Contact";
 import Separator from "components/Separator";
+import { ReactNode } from "react";
 
-function Layout({ children }) {
+function Layout(props: { children: ReactNode }): JSX.Element {
   return (
     <div>
       <Head>
@@ -16,7 +17,7 @@ function Layout({ children }) {
       </Head>
       <GlobalStyle />
       <Header />
-      {children}
+      {props.children}
       <Separator />
       <Contact />
       <Footer />

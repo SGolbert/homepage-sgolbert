@@ -13,7 +13,7 @@ export type Post = CommonHeader & {
   contentHtml: string;
 };
 
-export type ProjectHeader = CommonHeader & {
+export type ProjectHeader = Omit<CommonHeader, "author"> & {
   link: string;
 };
 

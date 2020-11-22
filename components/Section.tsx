@@ -1,5 +1,11 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
-import { SectionProps } from "./types";
+
+type SectionProps = {
+  title: string;
+  bg: string;
+  children: ReactNode;
+};
 
 function Section(props: SectionProps): JSX.Element {
   return (

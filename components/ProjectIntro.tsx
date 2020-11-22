@@ -1,7 +1,13 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { ProjectHeader } from "utils/types";
 
-function ProjectIntro(props) {
+type ProjectIntroProps = ProjectHeader & {
+  leftImg?: boolean;
+  lightThemed?: boolean;
+};
+
+function ProjectIntro(props: ProjectIntroProps): JSX.Element {
   return (
     <CardContainer {...props}>
       <ImgLink leftImg={props.leftImg}>
@@ -33,7 +39,7 @@ function ProjectIntro(props) {
   );
 }
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ lightThemed?: boolean }>`
   background: ${(props) =>
     props.lightThemed
       ? props.theme.colors.textWhite
@@ -61,7 +67,7 @@ const Img = styled.img`
   max-width: 480px; */
 `;
 
-const ImgLink = styled.div`
+const ImgLink = styled.div<{ leftImg?: boolean }>`
   display: flex;
   justify-content: center;
 
@@ -70,7 +76,7 @@ const ImgLink = styled.div`
   }
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled.div<{ lightThemed?: boolean; leftImg?: boolean }>`
   align-items: center;
   color: ${(props) =>
     props.lightThemed
@@ -111,7 +117,7 @@ const TextContainer = styled.div`
   }
 `;
 
-const Title = styled.h4`
+const Title = styled.h4<{ lightThemed?: boolean }>`
   color: ${(props) =>
     props.lightThemed
       ? props.theme.colors.textBlack

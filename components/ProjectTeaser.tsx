@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import Section from "components/Section";
 import ProjectIntro from "components/ProjectIntro";
-import TeaserPost from "components/TeaserPost";
+// import TeaserPost from "components/TeaserPost";
+import { ProjectHeader } from "utils/types";
 
 const background = "linear-gradient(180deg, #003087 0%, #001233 100%)";
 
-function ProjectTeaser(props) {
+type ProjectTeaserProps = {
+  projectPosts: ProjectHeader[];
+};
+
+function ProjectTeaser(props: ProjectTeaserProps): JSX.Element {
   const numberOfPosts =
     props.projectPosts.length > 4 ? 4 : props.projectPosts.length;
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function SocialMedia(props) {
+function SocialMedia(props: { className?: string }): JSX.Element {
   return (
     <ImgContainer {...props}>
       <SocialMediaLink

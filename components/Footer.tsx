@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Footer() {
+function Footer(): JSX.Element {
   return <Toe>Copyright Sebastian Golbert 2020</Toe>;
 }
 

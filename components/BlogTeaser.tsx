@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Section from "components/Section";
 import TeaserPost from "components/TeaserPost";
+import { PostHeader } from "utils/types";
 
-import { BlogTeaserProps } from "./types";
+type BlogTeaserProps = {
+  blogPosts: PostHeader[];
+};
 
 const background = "linear-gradient(180deg, #001233 0%, #003087 100%)";
 

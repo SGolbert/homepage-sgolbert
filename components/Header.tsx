@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import SocialMedia from "components/SocialMedia";
 
-function Header() {
+function Header(): JSX.Element {
   return (
     <HeaderBody>
       <HeaderContainer>
@@ -42,12 +42,6 @@ function Header() {
     </HeaderBody>
   );
 }
-
-const LinkTest = styled(Link)`
-  a {
-    color: red;
-  }
-`;
 
 const HeaderBody = styled.div`
   align-items: center;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Separator() {
+function Separator(): JSX.Element {
   return (
     <Container>
       <Wire />
