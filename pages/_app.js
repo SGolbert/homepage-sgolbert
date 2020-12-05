@@ -1,26 +1,26 @@
-import App from 'next/app';
-import { ThemeProvider } from 'styled-components';
+import App from "next/app";
+import { ThemeProvider } from "styled-components";
 
-const theme = {
+export const theme = {
   colors: {
-    primary: '#2B57B8',
-    primaryDark: '#003087',
-    primaryLight: '#6784EB',
-    grey: '#BFBFBF',
-    secondary: '#5ED640',
-    secondaryDark: '#19A400',
-    secondaryLight: '#95FF72',
-    textBlack: '#001233',
-    textWhite: '#FFFFFF',
+    primary: "#2B57B8",
+    primaryDark: "#003087",
+    primaryLight: "#6784EB",
+    grey: "#BFBFBF",
+    secondary: "#5ED640",
+    secondaryDark: "#19A400",
+    secondaryLight: "#95FF72",
+    textBlack: "#001233",
+    textWhite: "#FFFFFF",
   },
   backgrounds: {
-    about: 'linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)',
-    blog: 'linear-gradient(180deg, #001233 0%, #003087 100%)',
+    about: "linear-gradient(180deg, #001233 0%, #003087 24.48%, #001233 100%)",
+    blog: "linear-gradient(180deg, #001233 0%, #003087 100%)",
   },
   media_sizes: {
-    mobile: '375px',
-    mobileTransition: '800px',
-    desktop: '1440px',
+    mobile: "375px",
+    mobileTransition: "800px",
+    desktop: "1440px",
   },
 };
 
